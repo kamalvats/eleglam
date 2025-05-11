@@ -1,0 +1,15 @@
+@import "./base";
+@import "./abc";
+@import "./responsive";
+@font-face {
+    font-family: 'Nico Moji';
+    src: url('../Font/NicoMoji-Regular.eot');
+    src: url('../Font/NicoMoji-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../Font/NicoMoji-Regular.woff2') format('woff2'),
+        url('../Font/NicoMoji-Regular.woff') format('woff'),
+        url('../Font/NicoMoji-Regular.ttf') format('truetype'),
+        url('../Font/NicoMoji-Regular.svg#NicoMoji-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

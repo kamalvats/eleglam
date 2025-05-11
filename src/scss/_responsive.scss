@@ -1,0 +1,92 @@
+
+@media (max-width:1440px) {
+    .albumslickbottomslider .slick-next{
+        left: 51% !important;
+    }
+}
+
+@media (max-width:1280px) {
+    .albumslickbottomslider .slick-next{
+        left: 52% !important;
+    }
+}
+
+@media (max-width:1024px) {
+    .slick-next {
+  
+        left: 52% !important;
+       
+      }
+    // .circleBox {
+    //     width: 500px;
+    //     height: 500px;
+
+    // }
+}
+
+@media (max-width:991px) {
+    .albumslickbottomslider .slick-next{
+        left: 55% !important;
+    }
+    .slick-next {
+  
+        left: 52% !important;
+       
+      }
+    .circleBox {
+        width: 500px;
+        height: 500px;
+    }
+    .circleBoxNew {
+        width: 500px;
+        height: 500px;
+    }
+
+    .squarecontentBox {
+        width: 40px !important;
+    }
+}
+
+@media (max-width:767px) {
+    .EducationBox {
+        width: 62px !important;
+    }
+    .albumslickbottomslider .slick-track {
+        padding: 30px 0 30px !important;
+    }
+    .gradientButton {
+        padding: 7px 21px !important;
+        height: 43px !important;
+    }
+    .graytButton {
+        padding: 7px 21px !important;
+        height: 43px !important;
+    }
+    .albumslickbottomslider .slick-prev {
+        left: 45% !important;
+    }
+    .circleBox {
+        width: 330px;
+        height: 330px;
+    }
+
+    .circleBoxNew {
+        width: 330px;
+        height: 330px;
+    }
+
+    .squarecontentBox {
+        width: 78px !important;
+    }
+    .filterBtn {
+        font-size: 10px !important;
+        padding: 6px 15px !important;
+    }
+    .slick-next {
+        left: 52% !important;
+       
+      }
+      .CreaterfilterBtn {
+        min-width: 0px !important;
+      }
+}
