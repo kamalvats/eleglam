@@ -57,13 +57,13 @@ const OrderList = () => {
         console.log("object", response.data.result.docs);
       } else {
         setLoading(false);
-        toast.error("Invalid Pincode. Please enter again.");
+        // toast.error("Invalid Pincode. Please enter again.");
         setOrderProductList();
         setNoOfPages(1);
       }
     } catch (error) {
       setLoading(false);
-      toast.error("Failed to fetch state and district");
+      // toast.error("Failed to fetch state and district");
       setOrderProductList();
       setNoOfPages(1);
     }

@@ -21,6 +21,7 @@ import { makeStyles } from "@material-ui/styles";
 import { useHistory } from "react-router-dom";
 import { Transition } from "react-transition-group";
 import ScrollingTitle from "./ScrollTitle";
+import SearchBar from "./Searchbar";
 // import Typography from "@/theme/typography";
 import ClearIcon from "@material-ui/icons/Clear";
 import toast from "react-hot-toast";
@@ -53,6 +54,19 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     // margin: "0 80px",
     padding: "0 20px",
+    // "@media (max-width: 1100px)": {
+    //   margin: "0 20px",
+    // },
+    // "@media (max-width: 400px)": {
+    //   margin: "0px -10px",
+    // },
+    // Align items to the right
+  },
+  toolbar1: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    // margin: "0 80px",
     // "@media (max-width: 1100px)": {
     //   margin: "0 20px",
     // },
@@ -357,94 +371,102 @@ function Header() {
             />
           </Box>
 
-          <Box>
-
-            {token && (
-
-<Button
-              component={Link}
-              to="/myorder"
-              onClick={() => handleTabClick("aboutus")}
-              className={
-                location.pathname === "/myorder" ? classes.active : classes.home
-              }
-            >
-              My Orders
-            </Button>
-
-            )}
-            
-
-            <IconButton
-              onClick={() => {
-                
-                if (token) {
-                  history.push("/my-cart"); // Token hai toh my-cart pe bheje
-                } else {
-                  history.push("/sign-in"); // Token nahi hai toh sign-in pe bheje
-                }
+          <Box sx={{ position: "relative" }}>
+            <Box
+              className={classes.toolbar1}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                // overflowX: "scroll",
+                whiteSpace: "nowrap", // Prevent wrapping
+                padding: "0 8px", // Optional: padding for scroll comfort
+                scrollbarWidth: "none", // Hide scrollbar in Firefox
+                "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar in Chrome
               }}
             >
-              {window.location.pathname !== "/my-cart" ? (
-                <Badge
-                badgeContent={
-                  userDetails?.cart?.filter(item => item?.productId?.stockAvailable !== false).length || 0
-                }
-                
-                  color="secondary"
-                  overlap="rectangular"
-                >
-                  <ShoppingCartIcon style={{ color: "#7E563D" }} />
-                </Badge>
-              ) : (
-                <ShoppingCartIcon style={{ color: "#7E563D" }} />
-              )}
-            </IconButton>
+              <SearchBar />
+              <Box>
+                {token && (
+                  <Button
+                    onClick={() => {
+                      history.push("/myorder");
+                    }}
+                    className={
+                      location.pathname === "/myorder"
+                        ? classes.active
+                        : classes.home
+                    }
+                  >
+                    <Link
+                      to="/myorder"
+                      style={{ textDecoration: "none" }}
+                      className={
+                        location.pathname === "/myorder"
+                          ? classes.active
+                          : classes.home
+                      }
+                    >
+                      My Orders
+                    </Link>
+                  </Button>
+                )}
 
-            {!sessionStorage.getItem("ELEGLAMToken") && (
-              <Button
-                className={classes.loginButton}
-                onClick={() => {
-                  history.push("/sign-in");
-                }}
-              >
-                <Link
-                  to="/sign-in"
-                  style={{ textDecoration: "none", color: "white" }}
+                <IconButton
+                  onClick={() => {
+                    if (token) {
+                      history.push("/my-cart"); // Token hai toh my-cart pe bheje
+                    } else {
+                      history.push("/sign-in"); // Token nahi hai toh sign-in pe bheje
+                    }
+                  }}
                 >
-                  Sign In
-                </Link>
-              </Button>
-            )}
+                  {window.location.pathname !== "/my-cart" ? (
+                    <Badge
+                      badgeContent={
+                        userDetails?.cart?.filter(
+                          (item) => item?.productId?.stockAvailable !== false
+                        ).length || 0
+                      }
+                      color="secondary"
+                      overlap="rectangular"
+                    >
+                      <ShoppingCartIcon style={{ color: "#7E563D" }} />
+                    </Badge>
+                  ) : (
+                    <ShoppingCartIcon style={{ color: "#7E563D" }} />
+                  )}
+                </IconButton>
 
-            {sessionStorage.getItem("ELEGLAMToken") && (
-              <Button
-                className={classes.loginButton}
-                onClick={() => setLogoutDialogOpen(true)}
-              >
-                Log Out
-              </Button>
-            )}
+                {!sessionStorage.getItem("ELEGLAMToken") && (
+                  <Button
+                    className={classes.loginButton}
+                    onClick={() => {
+                      history.push("/sign-in");
+                    }}
+                  >
+                    <Link
+                      to="/sign-in"
+                      style={{ textDecoration: "none", color: "white" }}
+                    >
+                      Sign In
+                    </Link>
+                  </Button>
+                )}
+
+                {sessionStorage.getItem("ELEGLAMToken") && (
+                  <Button
+                    className={classes.loginButton}
+                    onClick={() => setLogoutDialogOpen(true)}
+                  >
+                    Log Out
+                  </Button>
+                )}
+              </Box>
+            </Box>
           </Box>
         </Box>
       </AppBar>
-
-      {/* <Dialog open={logoutDialogOpen} onClose={() => setLogoutDialogOpen(false)}>
-        <DialogTitle>Confirm Logout</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Are you sure you want to log out?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setLogoutDialogOpen(false)} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleLogout} color="secondary">
-            Log Out
-          </Button>
-        </DialogActions>
-      </Dialog> */}
 
       <Dialog
         maxWidth="xs"

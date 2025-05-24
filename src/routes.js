@@ -174,7 +174,7 @@ export const routes = [
     path: "/myorder",
     layout: HomeLayout,
     component: lazy(() => import("src/views/pages/Myorder")),
-    guard:true
+    // guard:true
   },
 
   {
