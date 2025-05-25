@@ -518,7 +518,7 @@ const MyCart = () => {
 
           // Step 2: Open Razorpay Payment Modal
           const options = {
-            key: "rzp_test_9LiQfQNEYrcCXo", // Razorpay API Key from Backend
+            key: "rzp_live_xzy5hhbrPTjkBR", // Razorpay API Key from Backend
             amount: amount * 100, // Razorpay needs amount in paise
             currency,
             name: "ELEGLAM",
